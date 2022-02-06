@@ -2,7 +2,9 @@ package by.bsuir.lab3.triangle;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TriangleTest {
 
@@ -187,7 +189,7 @@ class TriangleTest {
         this.parameterB = 2.0D;
         this.parameterC = 2.0D;
         Triangle triangle = new Triangle(this.parameterA, this.parameterB, this.parameterC);
-        assertEquals(triangle.detectTriangle(), 0L);
+        assertEquals(triangle.detectTriangle(), 1);
     }
 
     @Test
@@ -223,7 +225,7 @@ class TriangleTest {
         this.parameterB = 2.0D;
         this.parameterC = 2.0D * Math.sqrt(2.0D);
         Triangle triangle = new Triangle(this.parameterA, this.parameterB, this.parameterC);
-        assertEquals(triangle.detectTriangle(), 0L);
+        assertEquals(triangle.detectTriangle(), 2L);
     }
 
     @Test

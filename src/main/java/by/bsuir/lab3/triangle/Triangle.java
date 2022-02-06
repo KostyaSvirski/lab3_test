@@ -1,12 +1,10 @@
 package by.bsuir.lab3.triangle;
 
+import lombok.Getter;
+
+@Getter
 public class Triangle {
 
-
-    final int TR_EQUILATERAL = 1;
-    final int TR_ISOSCELES = 2;
-    final int TR_ORDYNARY = 4;
-    final int TR_RECTANGULAR = 8;
     private double a;
     private double b;
     private double c;
@@ -19,10 +17,6 @@ public class Triangle {
         this.message = "";
     }
 
-    public String getMessage() {
-        return this.message;
-    }
-
     public boolean checkTriangle() {
         if (this.a <= 0.0D) {
             this.message = "a<=0";
@@ -30,7 +24,7 @@ public class Triangle {
         } else if (this.b <= 0.0D) {
             this.message = "b<=0";
             return false;
-        } else if (this.b <= 0.0D) {
+        } else if (this.c <= 0.0D) {
             this.message = "c<=0";
             return false;
         } else if (this.a + this.b <= this.c) {
@@ -48,20 +42,19 @@ public class Triangle {
     }
 
     public int detectTriangle() {
-        int final_state = 0;
         if (this.a * this.a + this.b * this.b == this.c * this.c || this.b * this.b + this.c * this.c == this.a * this.a || this.a * this.a + this.c * this.c == this.b * this.c) {
-            final_state |= 8;
+            return TypeOfTriangle.RECTANGULAR.getValue();
         }
 
         if (this.a == this.b && this.b == this.c && this.a == this.c) {
-            final_state |= 1;
+            return TypeOfTriangle.EQUILATERAL.getValue();
         }
 
         if (this.a == this.b || this.b == this.c || this.a == this.c) {
-            final_state |= 2;
+            return TypeOfTriangle.ISOSCELES.getValue();
         }
 
-        return final_state == 0 ? 4 : final_state;
+        return TypeOfTriangle.ORDYNARY.getValue();
     }
 
     public double getSquare() {
